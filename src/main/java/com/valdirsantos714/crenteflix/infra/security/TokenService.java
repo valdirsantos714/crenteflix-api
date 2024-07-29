@@ -18,7 +18,7 @@ public class TokenService {
         try {
             Algorithm algorithm = Algorithm.HMAC256("12345");
             return JWT.create()
-                    .withIssuer("Api crenteflix") //Nome da api
+                    .withIssuer("crenteflix") //Nome da api
                     .withSubject(users.getLogin()) //o login da pessoa pra quem tá gerando
                     .withExpiresAt(dataExpiracao())
                     .sign(algorithm);
@@ -36,7 +36,7 @@ public class TokenService {
         try {
             Algorithm algorithm = Algorithm.HMAC256("12345");
             return JWT.require(algorithm)
-                    .withIssuer("Api igreja")
+                    .withIssuer("crenteflix")
                     .build()
                     .verify(tokenJWT) //Verifica o token se existe e se é válido
                     .getSubject();
