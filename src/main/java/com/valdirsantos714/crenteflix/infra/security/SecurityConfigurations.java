@@ -25,17 +25,6 @@ public class SecurityConfigurations {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(csrf -> csrf.disable())
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(req -> req.requestMatchers(HttpMethod.POST,"/auth/login").permitAll()) //Diz pra permitir que todo mundo pode acessar a requisição /auth
-                .authorizeHttpRequests(req -> req.requestMatchers(HttpMethod.POST,"/auth/register").permitAll())
-                .authorizeHttpRequests(req -> req.requestMatchers(HttpMethod.POST,"/auth/register").hasRole("ADMIN"))
-                .authorizeHttpRequests(req -> req.requestMatchers(HttpMethod.POST, "/congregacao").hasRole("ADMIN"))
-                .authorizeHttpRequests(req -> req.requestMatchers(HttpMethod.PUT, "/congregacao/{idCongregacao}").hasRole("ADMIN"))
-                .authorizeHttpRequests(req -> req.requestMatchers(HttpMethod.POST, "/endereco").hasRole("ADMIN"))
-                .authorizeHttpRequests(req -> req.requestMatchers(HttpMethod.PUT, "/endereco/{id}").hasRole("ADMIN"))
-                .authorizeHttpRequests(req -> req.requestMatchers(HttpMethod.DELETE, "/endereco/{id}").hasRole("ADMIN"))
-                .authorizeHttpRequests(req -> req.requestMatchers(HttpMethod.PUT, "/membros/{id}").hasRole("ADMIN"))
-                .authorizeHttpRequests(req -> req.requestMatchers(HttpMethod.POST, "/membros").hasRole("ADMIN"))
-                .authorizeHttpRequests(req -> req.requestMatchers(HttpMethod.DELETE, "/membros/{id}").hasRole("ADMIN"))
                 .authorizeHttpRequests(req -> req.anyRequest().authenticated()) //E que as outras requisições tem que estar autenticado
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class) //Diz pra ele filtrar primeiro usando o meu filtro que vai gerar a autorização para o usuário
                 .build();

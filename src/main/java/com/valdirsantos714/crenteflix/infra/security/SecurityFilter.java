@@ -1,6 +1,6 @@
 package com.valdirsantos714.crenteflix.infra.security;
 
-import com.valdirsantos714.api_igreja.repositories.UsersRepository;
+import com.valdirsantos714.crenteflix.repositories.UsersRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
