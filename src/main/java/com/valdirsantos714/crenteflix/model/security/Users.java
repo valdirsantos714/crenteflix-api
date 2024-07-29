@@ -1,7 +1,7 @@
 package com.valdirsantos714.crenteflix.model.security;
 
 import com.valdirsantos714.crenteflix.model.favoritos.Favoritos;
-import com.valdirsantos714.crenteflix.payloads.DadosAutenticacao;
+import com.valdirsantos714.crenteflix.payloads.auth.DadosAutenticacao;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;

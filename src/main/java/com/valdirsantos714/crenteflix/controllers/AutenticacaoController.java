@@ -2,9 +2,9 @@ package com.valdirsantos714.crenteflix.controllers;
 
 import com.valdirsantos714.crenteflix.infra.security.TokenService;
 import com.valdirsantos714.crenteflix.model.security.Users;
-import com.valdirsantos714.crenteflix.payloads.DadosAdmin;
-import com.valdirsantos714.crenteflix.payloads.DadosAutenticacao;
-import com.valdirsantos714.crenteflix.payloads.DadosToken;
+import com.valdirsantos714.crenteflix.payloads.auth.DadosAdmin;
+import com.valdirsantos714.crenteflix.payloads.auth.DadosAutenticacao;
+import com.valdirsantos714.crenteflix.payloads.auth.DadosToken;
 import com.valdirsantos714.crenteflix.services.UsersService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

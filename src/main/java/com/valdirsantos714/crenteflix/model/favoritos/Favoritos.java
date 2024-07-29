@@ -5,6 +5,8 @@ import com.valdirsantos714.crenteflix.model.security.Users;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "favoritos")
 @Getter
@@ -12,7 +14,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Favoritos {
+public class Favoritos implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,4 +1,4 @@
-package com.valdirsantos714.crenteflix.payloads;
+package com.valdirsantos714.crenteflix.payloads.auth;
 
 import com.valdirsantos714.crenteflix.model.security.UserRole;
 import com.valdirsantos714.crenteflix.model.security.Users;

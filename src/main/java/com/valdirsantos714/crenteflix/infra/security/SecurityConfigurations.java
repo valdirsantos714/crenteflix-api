@@ -27,6 +27,7 @@ public class SecurityConfigurations {
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(req -> req.requestMatchers(HttpMethod.POST,"/auth/register").permitAll())
                 .authorizeHttpRequests(req -> req.requestMatchers(HttpMethod.POST,"/auth/login").permitAll())
+                .authorizeHttpRequests(req ->req.requestMatchers(HttpMethod.GET, "/conteudo/all").permitAll())
                 .authorizeHttpRequests(req -> req.anyRequest().authenticated()) //E que as outras requisições tem que estar autenticado
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class) //Diz pra ele filtrar primeiro usando o meu filtro que vai gerar a autorização para o usuário
                 .build();
