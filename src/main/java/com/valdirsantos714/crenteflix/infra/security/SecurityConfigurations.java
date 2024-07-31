@@ -28,6 +28,10 @@ public class SecurityConfigurations {
                 .authorizeHttpRequests(req -> req.requestMatchers(HttpMethod.POST,"/auth/register").permitAll())
                 .authorizeHttpRequests(req -> req.requestMatchers(HttpMethod.POST,"/auth/login").permitAll())
                 .authorizeHttpRequests(req ->req.requestMatchers(HttpMethod.GET, "/conteudo/all").permitAll())
+                .authorizeHttpRequests(req ->req.requestMatchers(HttpMethod.POST, "/conteudo").permitAll())
+                .authorizeHttpRequests(req ->req.requestMatchers(HttpMethod.GET, "/conteudo/{id}").permitAll())
+                .authorizeHttpRequests(req ->req.requestMatchers(HttpMethod.GET, "/conteudo/series").permitAll())
+                .authorizeHttpRequests(req ->req.requestMatchers(HttpMethod.GET, "/conteudo/filmes").permitAll())
                 .authorizeHttpRequests(req -> req.anyRequest().authenticated()) //E que as outras requisições tem que estar autenticado
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class) //Diz pra ele filtrar primeiro usando o meu filtro que vai gerar a autorização para o usuário
                 .build();

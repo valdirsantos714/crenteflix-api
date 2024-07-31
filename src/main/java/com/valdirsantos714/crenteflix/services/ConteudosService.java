@@ -1,5 +1,6 @@
 package com.valdirsantos714.crenteflix.services;
 
+import com.valdirsantos714.crenteflix.model.conteudo.Categoria;
 import com.valdirsantos714.crenteflix.model.conteudo.Conteudo;
 import com.valdirsantos714.crenteflix.repositories.ConteudoRepository;
 import jakarta.transaction.Transactional;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -51,4 +53,17 @@ public class ConteudosService {
 
         repository.deleteById(id);
     }
+
+    public List<Conteudo> findFilmes() {
+        var list = findAll().stream().filter((l) -> l.getCategoria() == Categoria.FILME).collect(Collectors.toList());
+
+        return list;
+    }
+
+    public List<Conteudo> findSeries() {
+        var list = findAll().stream().filter((l) -> l.getCategoria() == Categoria.SERIE).collect(Collectors.toList());
+
+        return list;
+    }
+
 }

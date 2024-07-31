@@ -12,6 +12,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/conteudo")
+@CrossOrigin("*")
 public class ConteudosController {
 
     @Autowired
@@ -54,5 +55,19 @@ public class ConteudosController {
         service.delete(id);
 
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/filmes")
+    public ResponseEntity verFilmes () {
+        var list = service.findFilmes();
+
+        return ResponseEntity.ok().body(list.stream().map(ConteudoResponsePayload::new));
+    }
+
+    @GetMapping("/series")
+    public ResponseEntity verSeries () {
+        var list = service.findSeries();
+
+        return ResponseEntity.ok().body(list.stream().map(ConteudoResponsePayload::new));
     }
 }

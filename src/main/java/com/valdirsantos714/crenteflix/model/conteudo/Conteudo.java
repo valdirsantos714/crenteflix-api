@@ -26,6 +26,8 @@ public class Conteudo implements Serializable {
 
     private String nome;
     private String imgUrl;
+
+    @Column(columnDefinition = "text")
     private String descricao;
     private String linkAssistir;
     private String duracaoFilme;
