@@ -1,13 +1,10 @@
 package com.valdirsantos714.crenteflix.model.conteudo;
 
-import com.valdirsantos714.crenteflix.model.favoritos.Favoritos;
 import com.valdirsantos714.crenteflix.payloads.conteudo.ConteudoRequestPayload;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "conteudo")
@@ -24,6 +21,7 @@ public class Conteudo implements Serializable {
     @Enumerated(EnumType.STRING)
     private Categoria categoria;
 
+    @Column(unique = true)
     private String nome;
     private String imgUrl;
 
@@ -33,9 +31,6 @@ public class Conteudo implements Serializable {
     private String duracaoFilme;
     private Integer anoLancamento;
     private String faixaEtaria;
-
-    @OneToMany(mappedBy = "conteudo")
-    private List<Favoritos> favoritosList = new ArrayList<>();
 
     public Conteudo(ConteudoRequestPayload payload) {
         this.categoria = payload.categoria();

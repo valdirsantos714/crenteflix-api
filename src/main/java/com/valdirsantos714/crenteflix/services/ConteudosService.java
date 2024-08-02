@@ -42,7 +42,6 @@ public class ConteudosService {
         conteudo.setDuracaoFilme(conteudoNovo.getDuracaoFilme());
         conteudo.setAnoLancamento(conteudoNovo.getAnoLancamento());
         conteudo.setLinkAssistir(conteudoNovo.getLinkAssistir());
-        conteudo.setFavoritosList(conteudoNovo.getFavoritosList());
         repository.save(conteudo);
 
         return conteudo;
@@ -64,6 +63,25 @@ public class ConteudosService {
         var list = findAll().stream().filter((l) -> l.getCategoria() == Categoria.SERIE).collect(Collectors.toList());
 
         return list;
+    }
+
+    public List<Conteudo> findFilmesByName(String name) {
+        var filmes = findFilmes().stream().filter((f) -> f.getNome().toLowerCase().startsWith(name.toLowerCase())).collect(Collectors.toList());
+
+        return filmes;
+    }
+
+    public List<Conteudo> findSeriesByName(String name) {
+        var series = findSeries().stream().filter((s) -> s.getNome().toLowerCase().startsWith(name.toLowerCase())).collect(Collectors.toList());
+
+        return series;
+    }
+
+    //Pesquisa na lista de séries e de filmes
+    public List<Conteudo> findConteudoByName(String name) {
+        var conteudo = findAll().stream().filter((c) -> c.getNome().toLowerCase().startsWith(name.toLowerCase())).collect(Collectors.toList());
+
+        return conteudo;
     }
 
 }

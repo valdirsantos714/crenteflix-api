@@ -26,7 +26,7 @@ public class ConteudosController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity findById(@PathVariable Long id) {
+    public ResponseEntity findById(@PathVariable (name = "id") Long id) {
         var conteudo = service.findById(id);
 
         return ResponseEntity.ok(new ConteudoResponsePayload(conteudo));
@@ -69,5 +69,26 @@ public class ConteudosController {
         var list = service.findSeries();
 
         return ResponseEntity.ok().body(list.stream().map(ConteudoResponsePayload::new));
+    }
+
+    @GetMapping("/find/{nomeConteudo}")
+    public ResponseEntity findConteudoByName(@PathVariable (name = "nomeConteudo") String nomeConteudo) {
+        var conteudo = service.findConteudoByName(nomeConteudo);
+
+        return ResponseEntity.ok(conteudo.stream().map(ConteudoResponsePayload::new));
+    }
+
+    @GetMapping("/filmes/{nomeFilme}")
+    public ResponseEntity findFilmeByName(@PathVariable (name = "nomeFilme") String nomeFilme) {
+        var filmes = service.findFilmesByName(nomeFilme);
+
+        return ResponseEntity.ok(filmes.stream().map(ConteudoResponsePayload::new));
+    }
+
+    @GetMapping("/series/{nomeSerie}")
+    public ResponseEntity findSerieByName(@PathVariable (name = "nomeSerie") String nomeSerie) {
+        var series = service.findSeriesByName(nomeSerie);
+
+        return ResponseEntity.ok(series.stream().map(ConteudoResponsePayload::new));
     }
 }
