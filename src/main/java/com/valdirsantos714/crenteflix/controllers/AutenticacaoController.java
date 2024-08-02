@@ -6,6 +6,8 @@ import com.valdirsantos714.crenteflix.payloads.auth.DadosAdmin;
 import com.valdirsantos714.crenteflix.payloads.auth.DadosAutenticacao;
 import com.valdirsantos714.crenteflix.payloads.auth.DadosToken;
 import com.valdirsantos714.crenteflix.services.UsersService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -56,6 +58,7 @@ public class AutenticacaoController {
 
     }
 
+    @Operation(security = { @SecurityRequirement(name = "bearer-key") })
     @GetMapping("/all")
     public ResponseEntity findAllUsers() {
         var list = service.findAll();

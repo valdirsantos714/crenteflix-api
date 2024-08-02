@@ -4,6 +4,8 @@ import com.valdirsantos714.crenteflix.model.conteudo.Conteudo;
 import com.valdirsantos714.crenteflix.payloads.conteudo.ConteudoRequestPayload;
 import com.valdirsantos714.crenteflix.payloads.conteudo.ConteudoResponsePayload;
 import com.valdirsantos714.crenteflix.services.ConteudosService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +34,7 @@ public class ConteudosController {
         return ResponseEntity.ok(new ConteudoResponsePayload(conteudo));
     }
 
-
+    @Operation(security = { @SecurityRequirement(name = "bearer-key") })
     @PostMapping
     public ResponseEntity save(@RequestBody @Valid ConteudoRequestPayload payload, UriComponentsBuilder builder) {
         var conteudo = new Conteudo(payload);
@@ -42,6 +44,7 @@ public class ConteudosController {
 
     }
 
+    @Operation(security = { @SecurityRequirement(name = "bearer-key") })
     @PutMapping("/{id}")
     public ResponseEntity update (@PathVariable Long id, @RequestBody @Valid ConteudoRequestPayload payload) {
         var conteudoNovo = new Conteudo(payload);
@@ -50,6 +53,7 @@ public class ConteudosController {
         return ResponseEntity.ok(new ConteudoResponsePayload(conteudoNovo));
     }
 
+    @Operation(security = { @SecurityRequirement(name = "bearer-key") })
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable Long id) {
         service.delete(id);
