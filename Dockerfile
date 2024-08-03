@@ -14,4 +14,8 @@ WORKDIR /app
 
 EXPOSE 8080
 
+RUN echo "DATABASE_URL=${DATABASE_URL}" && \
+    echo "USERNAME=${USERNAME}" && \
+    echo "PASSWORD=${PASSWORD}"
+
 CMD [ "java", "-jar", "app.jar" ]
