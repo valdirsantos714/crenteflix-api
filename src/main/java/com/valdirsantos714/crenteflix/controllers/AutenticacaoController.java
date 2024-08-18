@@ -31,7 +31,6 @@ public class AutenticacaoController {
     @Autowired
     private UsersService service;
 
-    @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping("/login")
     public ResponseEntity efetuarLogin(@RequestBody @Valid DadosAutenticacao dados){
     try {
