@@ -23,9 +23,7 @@ public class SpringDocConfigurations {
                         .description("CrenteFlix é uma API que permite a autenticação de usuários e oferece funcionalidades para cadastrar, atualizar, deletar e buscar filmes e séries.")
                         .contact(new Contact()
                                 .name("Valdir Santos")
-                                .email("valdirsantost40@gmail.com"))
-                        .license(new License()
-                                .name("Apache 2.0")
-                                .url("http://voll.med/api/licenca")));
+                                .email("valdirsantost40@gmail.com")));
+
     }
 }
